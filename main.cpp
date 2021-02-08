@@ -12,6 +12,8 @@ int main(int argc, char *argv[])
 
     DataBaseWorker databaseWorker;
     bool bRes = databaseWorker.initDataBase();
+    bRes = databaseWorker.isValid();
+    Q_UNUSED(bRes)
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

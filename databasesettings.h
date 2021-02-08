@@ -1,13 +1,23 @@
-#ifndef STRUCTURES_H
-#define STRUCTURES_H
+#ifndef DATABASESETTINGS_H
+#define DATABASESETTINGS_H
 #include <QString>
 
 struct DatabaseSettings
 {
     DatabaseSettings() = default;
-    DatabaseSettings(QString &&hn, QString &&dn, QString &&un, QString &&pwd, QString &&drv) :
-        hostName(hn), databaseName(dn), userName(un), password(pwd), driver(drv)
+    DatabaseSettings(QString &&hn, QString &&dn, QString &&un, QString &&pwd, QString &&drv, QString &&path) :
+        hostName{hn}, databaseName{dn}, userName{un}, password{pwd}, driver{drv}, databasePath(path)
     {
+    }
+
+    inline QString getDatabasePath() const
+    {
+        return databasePath;
+    }
+
+    inline void setDatabasePath(const QString &value)
+    {
+        databasePath = value;
     }
     inline QString getDriver() const
     {
@@ -57,8 +67,15 @@ private:
     QString userName;
     QString password;
     QString driver;
+    QString databasePath;
 };
 
-static const DatabaseSettings databaseSettings(std::move("localhost"),std::move("weather_db"),std::move("weather_user"),std::move("weather_pwd"),std::move("QSQLITE"));
+static const DatabaseSettings databaseSettings(std::move("localhost"),
+                                               std::move("weather_db"),
+                                               std::move("weather_user"),
+                                               std::move("weather_pwd"),
+                                               std::move("QSQLITE"),
+                                               std::move("/home/gleb/database")
+                                               );
 
-#endif // STRUCTURES_H
+#endif // DATABASESETTINGS_H

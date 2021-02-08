@@ -1,6 +1,6 @@
 QT += quick sql
 
-CONFIG += c++11
+CONFIG += c++14
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -27,5 +27,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    databaseworker.h \
-    structures.h
+    city.h \
+    databasesettings.h \
+    databaseworker.h

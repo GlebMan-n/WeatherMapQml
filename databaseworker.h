@@ -10,6 +10,8 @@ class DataBaseWorker : public QObject
 public:
     explicit DataBaseWorker(QObject *parent = nullptr);
     bool initDataBase();
+    inline bool isValid() const { return m_db ? m_db->isValid() : false; }
+    bool importCities(QString &&path);
 private:
     QSqlDatabase* m_db;
 signals:
